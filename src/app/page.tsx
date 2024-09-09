@@ -1,9 +1,5 @@
-import { Button } from "@/components/ui/button";
+import { PalletContent } from "@/components/page/PalletContent";
 
 export default function Home() {
-  return (
-    <main>
-      <Button>Get Started!</Button>
-    </main>
-  );
+  return <PalletContent />;
 }
