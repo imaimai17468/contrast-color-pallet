@@ -7,21 +7,21 @@ import "react-color-palette/css";
 
 export const ColorSetting: React.FC = () => {
   const [color, setColor] = useColor("#561ecb");
-  const [numberOfColors, setNumberOfColors] = useState(10);
+  const [numberOfColors, setNumberOfColors] = useState(1);
   return (
     <div className="flex flex-col gap-8">
       <ColorPicker color={color} onChange={setColor} />
       <div className="flex flex-col gap-4">
         <div className="flex justify-between items-end">
           <p>Number of Colors</p>
-          <div className="text-2xl font-bold">{numberOfColors / 10}</div>
+          <div className="text-2xl font-bold">{numberOfColors}</div>
         </div>
         <Slider
-          value={[numberOfColors]}
+          value={[numberOfColors * 10]}
           max={100}
           step={10}
           min={10}
-          onValueChange={(value) => setNumberOfColors(value[0])}
+          onValueChange={(value) => setNumberOfColors(value[0] / 10)}
         />
       </div>
     </div>
