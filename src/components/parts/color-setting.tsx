@@ -1,16 +1,26 @@
 "use client";
-
-import { useState } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
 import { Slider } from "../ui/slider";
 import "react-color-palette/css";
+import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
 
 export const ColorSetting: React.FC = () => {
   const [color, setColor] = useColor("#561ecb");
-  const [numberOfColors, setNumberOfColors] = useState(1);
+  const [_, setBaseColor] = useQueryState(
+    "color",
+    parseAsString.withDefault("#561ecb").withOptions({ throttleMs: 500 }),
+  );
+  const [numberOfColors, setNumberOfColors] = useQueryState("numberOfColors", parseAsInteger.withDefault(1));
+
   return (
     <div className="flex flex-col gap-8">
-      <ColorPicker color={color} onChange={setColor} />
+      <ColorPicker
+        color={color}
+        onChange={(iColor) => {
+          setBaseColor(iColor.hex);
+          setColor(iColor);
+        }}
+      />
       <div className="flex flex-col gap-4">
         <div className="flex justify-between items-end">
           <p>Number of Colors</p>
