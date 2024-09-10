@@ -38,11 +38,11 @@ export const ColorSetting: React.FC<Props> = ({ baseColor, numberOfColors }) => 
           <div className="text-2xl font-bold">{_numberOfColors}</div>
         </div>
         <Slider
-          value={[_numberOfColors * 10]}
-          max={100}
-          step={10}
-          min={10}
-          onValueChange={(value) => setNumberOfColors(value[0] / 10)}
+          value={[_numberOfColors]}
+          max={10}
+          step={1}
+          min={1}
+          onValueChange={(value) => setNumberOfColors(value[0])}
         />
       </div>
     </div>
