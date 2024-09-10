@@ -2,15 +2,26 @@
 import { ColorPicker, useColor } from "react-color-palette";
 import { Slider } from "../../ui/slider";
 import "react-color-palette/css";
-import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
+import { searchParams } from "@/utils/search-params";
+import { useQueryState } from "nuqs";
 
-export const ColorSetting: React.FC = () => {
-  const [color, setColor] = useColor("#561ecb");
-  const [_, setBaseColor] = useQueryState(
+type Props = {
+  baseColor: string;
+  numberOfColors: number;
+};
+
+export const ColorSetting: React.FC<Props> = ({ baseColor, numberOfColors }) => {
+  const [color, setColor] = useColor(baseColor);
+  const [_baseColor, setBaseColor] = useQueryState(
     "baseColor",
-    parseAsString.withDefault("#561ecb").withOptions({ throttleMs: 500 }),
+    searchParams.baseColor.withDefault(baseColor).withOptions({ throttleMs: 500, shallow: false }),
   );
-  const [numberOfColors, setNumberOfColors] = useQueryState("numberOfColors", parseAsInteger.withDefault(1));
+  const [_numberOfColors, setNumberOfColors] = useQueryState(
+    "numberOfColors",
+    searchParams.numberOfColors.withDefault(numberOfColors).withOptions({
+      shallow: false,
+    }),
+  );
 
   return (
     <div className="flex flex-col gap-8">
@@ -24,10 +35,10 @@ export const ColorSetting: React.FC = () => {
       <div className="flex flex-col gap-4">
         <div className="flex justify-between items-end">
           <p>Number of Colors</p>
-          <div className="text-2xl font-bold">{numberOfColors}</div>
+          <div className="text-2xl font-bold">{_numberOfColors}</div>
         </div>
         <Slider
-          value={[numberOfColors * 10]}
+          value={[_numberOfColors * 10]}
           max={100}
           step={10}
           min={10}
