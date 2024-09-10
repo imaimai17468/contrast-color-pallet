@@ -1,6 +1,6 @@
 "use client";
 import { ColorPicker, useColor } from "react-color-palette";
-import { Slider } from "../ui/slider";
+import { Slider } from "../../ui/slider";
 import "react-color-palette/css";
 import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
 
