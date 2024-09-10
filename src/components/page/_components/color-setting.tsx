@@ -7,7 +7,7 @@ import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
 export const ColorSetting: React.FC = () => {
   const [color, setColor] = useColor("#561ecb");
   const [_, setBaseColor] = useQueryState(
-    "color",
+    "baseColor",
     parseAsString.withDefault("#561ecb").withOptions({ throttleMs: 500 }),
   );
   const [numberOfColors, setNumberOfColors] = useQueryState("numberOfColors", parseAsInteger.withDefault(1));
