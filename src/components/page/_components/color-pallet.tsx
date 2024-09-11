@@ -1,9 +1,7 @@
 "use client";
-
-import { type Oklch, oklch, parse } from "culori";
 import { useMemo } from "react";
+import { generateSigmoidData } from "../utils/sigmoid";
 import { Pallet } from "./pallet";
-
 type Props = {
   baseColor: string;
   numberOfColors: number;
@@ -11,11 +9,7 @@ type Props = {
 
 export const ColorPallet: React.FC<Props> = ({ baseColor, numberOfColors }) => {
   const lightnessList = useMemo(() => {
-    const lightness = oklch(parse(baseColor) as Oklch).l;
-    if (numberOfColors === 1) {
-      return [lightness];
-    }
-    return Array.from({ length: numberOfColors }, (_, i) => i / (numberOfColors - 1));
+    return generateSigmoidData(numberOfColors);
   }, [numberOfColors]);
 
   return (
@@ -23,7 +17,7 @@ export const ColorPallet: React.FC<Props> = ({ baseColor, numberOfColors }) => {
       <p className="text-2xl font-bold">{baseColor}</p>
       <div className="flex gap-4">
         {lightnessList.map((lightness) => (
-          <Pallet key={lightness} baseColor={baseColor} lightness={lightness} />
+          <Pallet key={lightness.x} baseColor={baseColor} lightness={lightness.y} />
         ))}
       </div>
     </div>
