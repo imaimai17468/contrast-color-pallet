@@ -1,5 +1,6 @@
 "use client";
 
+import { type Oklch, oklch, parse } from "culori";
 import { useMemo } from "react";
 import { Pallet } from "./pallet";
 
@@ -10,6 +11,10 @@ type Props = {
 
 export const ColorPallet: React.FC<Props> = ({ baseColor, numberOfColors }) => {
   const lightnessList = useMemo(() => {
+    const lightness = oklch(parse(baseColor) as Oklch).l;
+    if (numberOfColors === 1) {
+      return [lightness];
+    }
     return Array.from({ length: numberOfColors }, (_, i) => i / (numberOfColors - 1));
   }, [numberOfColors]);
 
