@@ -1,11 +1,11 @@
 export const contrastTextClassName = (contrast: number, theme: "light" | "dark") => {
-  if (contrast > 7) {
+  if (contrast >= 7) {
     return "text-green-500";
   }
-  if (contrast > 4.5) {
+  if (contrast >= 4.5) {
     return "text-yellow-500";
   }
-  if (contrast > 3) {
+  if (contrast >= 3) {
     return "text-orange-500";
   }
 
