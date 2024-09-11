@@ -15,7 +15,7 @@ export const Pallet: React.FC<PalletProps> = ({ baseColor, lightness }) => {
   const darkContrast = useMemo(() => wcagContrast(hexColor, "#000"), [hexColor]);
 
   return (
-    <div key={lightness} className="flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <p className="text-xs text-muted-foreground">{lightness.toFixed(2)}</p>
       <div
         className="w-16 h-16 rounded-md border"
