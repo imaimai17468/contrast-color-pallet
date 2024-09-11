@@ -4,8 +4,6 @@ import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
-export const description = "A line chart with dots";
-
 const chartConfig = {
   lightness: {
     label: "Lightness",
@@ -19,12 +17,12 @@ type LightnessChartProps = {
 
 export function LightnessChart({ lightnessList }: LightnessChartProps) {
   return (
-    <Card>
+    <Card className="w-fit">
       <CardHeader>
         <CardTitle>Lightness Chart</CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig}>
+        <ChartContainer config={chartConfig} className="h-72">
           <LineChart
             accessibilityLayer
             data={lightnessList}
