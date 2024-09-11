@@ -1,4 +1,4 @@
-export const contrastTextClassName = (contrast: number) => {
+export const contrastTextClassName = (contrast: number, theme: "light" | "dark") => {
   if (contrast > 7) {
     return "text-green-500";
   }
@@ -8,4 +8,6 @@ export const contrastTextClassName = (contrast: number) => {
   if (contrast > 3) {
     return "text-orange-500";
   }
+
+  return theme === "light" ? "text-muted-foreground" : "text-white";
 };
