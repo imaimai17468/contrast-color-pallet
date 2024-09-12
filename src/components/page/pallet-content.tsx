@@ -8,7 +8,7 @@ export const PalletContent: React.FC = () => {
   return (
     <div className="flex gap-16 p-16">
       <ColorSetting baseColors={baseColors} numberOfColors={numberOfColors} index={selectedColorIndex} />
-      <ColorPallet baseColors={baseColors} numberOfColors={numberOfColors} />
+      <ColorPallet baseColors={baseColors} numberOfColors={numberOfColors} selectedColorIndex={selectedColorIndex} />
     </div>
   );
 };
