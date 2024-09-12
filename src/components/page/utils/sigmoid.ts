@@ -1,6 +1,9 @@
 const sigmoid = (x: number): number => {
   const k = 10; // x軸の範囲（0〜10）に対応するスケーリングファクター
-  return 1 / (1 + Math.exp(-0.8 * (x - k / 2)));
+  const rawSigmoid = 1 / (1 + Math.exp(-0.5 * (x - k / 2)));
+
+  // 値を 0.1 ~ 1 にスケーリングする
+  return 0.1 + 0.9 * rawSigmoid;
 };
 
 export const generateSigmoidData = (steps: number): { x: number; y: number }[] => {
