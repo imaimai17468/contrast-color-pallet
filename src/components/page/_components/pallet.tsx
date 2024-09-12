@@ -25,7 +25,7 @@ export const Pallet: React.FC<PalletProps> = ({ baseColor, lightness }) => {
       />
       <div className="flex flex-col gap-2">
         <p className="text-xs text-muted-foreground">{hexColor}</p>
-        <div className="rounded-full border py-1 px-2 flex justify-center">
+        <div className="rounded-full bg-white border py-1 px-2 flex justify-center">
           <p className={clsx("text-xs", contrastTextClassName(lightContrast, "light"))}>{lightContrast.toFixed(2)}</p>
         </div>
         <div className="rounded-full bg-black py-1 px-2 flex justify-center">
