@@ -35,8 +35,8 @@ export const ColorPallet: React.FC<Props> = ({ baseColors, numberOfColors, selec
     <div className="flex flex-col gap-16">
       <div className="flex flex-col gap-8">
         {newBaseColors.map((baseColor, index) => (
-          <div key={`${baseColor}-${Math.random()}`} className="flex flex-col gap-2">
-            <div className="flex gap-4 items-center">
+          <div key={`${baseColor}-${Math.random()}`} className="flex gap-4">
+            <div className="flex flex-col justify-center">
               {newBaseColors.length === 1 ? (
                 <p className="text-xl font-bold">{baseColor}</p>
               ) : (
