@@ -2,7 +2,7 @@ import { createSearchParamsCache, createSerializer, parseAsArrayOf, parseAsInteg
 
 export const searchParams = {
   baseColors: parseAsArrayOf(parseAsString).withDefault(["#561ecb"]),
-  numberOfColors: parseAsInteger.withDefault(2),
+  numberOfColors: parseAsInteger.withDefault(5),
   selectedColorIndex: parseAsInteger.withDefault(0),
 };
 
