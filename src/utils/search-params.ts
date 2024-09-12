@@ -1,8 +1,9 @@
-import { createSearchParamsCache, createSerializer, parseAsInteger, parseAsString } from "nuqs/server";
+import { createSearchParamsCache, createSerializer, parseAsArrayOf, parseAsInteger, parseAsString } from "nuqs/server";
 
 export const searchParams = {
-  baseColor: parseAsString.withDefault("#561ecb"),
-  numberOfColors: parseAsInteger.withDefault(1),
+  baseColors: parseAsArrayOf(parseAsString).withDefault(["#561ecb"]),
+  numberOfColors: parseAsInteger.withDefault(2),
+  selectedColorIndex: parseAsInteger.withDefault(0),
 };
 
 export const searchParamsCache = createSearchParamsCache(searchParams);

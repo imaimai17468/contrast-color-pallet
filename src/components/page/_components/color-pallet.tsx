@@ -5,11 +5,11 @@ import { LightnessChart } from "./lightness-chart";
 import { Pallet } from "./pallet";
 import { PalletLegend } from "./pallet-legend";
 type Props = {
-  baseColor: string;
+  baseColors: string[];
   numberOfColors: number;
 };
 
-export const ColorPallet: React.FC<Props> = ({ baseColor, numberOfColors }) => {
+export const ColorPallet: React.FC<Props> = ({ baseColors, numberOfColors }) => {
   const lightnessList = useMemo(() => {
     return generateSigmoidData(numberOfColors);
   }, [numberOfColors]);
@@ -17,12 +17,16 @@ export const ColorPallet: React.FC<Props> = ({ baseColor, numberOfColors }) => {
   return (
     <div className="flex flex-col gap-16">
       <div className="flex flex-col gap-2">
-        <p className="text-2xl font-bold">{baseColor}</p>
-        <div className="flex gap-4">
-          {lightnessList.map((lightness) => (
-            <Pallet key={lightness.x} baseColor={baseColor} lightness={lightness.y} />
-          ))}
-        </div>
+        {baseColors.map((baseColor) => (
+          <div key={baseColor}>
+            <p className="text-2xl font-bold">{baseColor}</p>
+            <div className="flex gap-4">
+              {lightnessList.map((lightness) => (
+                <Pallet key={lightness.x} baseColor={baseColor} lightness={lightness.y} />
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
       <div className="flex gap-8 w-full">
         <LightnessChart lightnessList={lightnessList} />

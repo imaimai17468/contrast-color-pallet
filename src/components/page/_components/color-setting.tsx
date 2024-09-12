@@ -6,15 +6,16 @@ import { searchParams } from "@/utils/search-params";
 import { useQueryState } from "nuqs";
 
 type Props = {
-  baseColor: string;
+  baseColors: string[];
   numberOfColors: number;
+  index: number;
 };
 
-export const ColorSetting: React.FC<Props> = ({ baseColor, numberOfColors }) => {
-  const [color, setColor] = useColor(baseColor);
-  const [_baseColor, setBaseColor] = useQueryState(
-    "baseColor",
-    searchParams.baseColor.withDefault(baseColor).withOptions({ throttleMs: 500, shallow: false }),
+export const ColorSetting: React.FC<Props> = ({ baseColors, numberOfColors, index }) => {
+  const [color, setColor] = useColor(baseColors[index]);
+  const [_baseColor, setBaseColors] = useQueryState(
+    "baseColors",
+    searchParams.baseColors.withDefault(baseColors).withOptions({ throttleMs: 500, shallow: false }),
   );
   const [_numberOfColors, setNumberOfColors] = useQueryState(
     "numberOfColors",
@@ -28,7 +29,11 @@ export const ColorSetting: React.FC<Props> = ({ baseColor, numberOfColors }) => 
       <ColorPicker
         color={color}
         onChange={(iColor) => {
-          setBaseColor(iColor.hex);
+          setBaseColors((old) => {
+            const newColors = [...old];
+            newColors[index] = iColor.hex;
+            return newColors;
+          });
           setColor(iColor);
         }}
       />
@@ -41,7 +46,7 @@ export const ColorSetting: React.FC<Props> = ({ baseColor, numberOfColors }) => 
           value={[_numberOfColors]}
           max={10}
           step={1}
-          min={1}
+          min={2}
           onValueChange={(value) => setNumberOfColors(value[0])}
         />
       </div>
