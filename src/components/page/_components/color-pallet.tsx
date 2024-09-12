@@ -28,7 +28,7 @@ export const ColorPallet: React.FC<Props> = ({ baseColors, numberOfColors, selec
 
   const [newBaseColors, setNewBaseColors] = useQueryState(
     "baseColors",
-    searchParams.baseColors.withDefault(baseColors).withOptions({ shallow: false }),
+    searchParams.baseColors.withDefault(baseColors).withOptions({ shallow: false, history: "push" }),
   );
 
   return (

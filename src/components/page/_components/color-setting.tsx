@@ -21,6 +21,7 @@ export const ColorSetting: React.FC<Props> = ({ baseColors, numberOfColors, inde
     "numberOfColors",
     searchParams.numberOfColors.withDefault(numberOfColors).withOptions({
       shallow: false,
+      history: "push",
     }),
   );
 
