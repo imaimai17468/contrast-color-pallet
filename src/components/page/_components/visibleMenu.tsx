@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import type { CheckedState } from "@radix-ui/react-checkbox";
 import { EyeOffIcon } from "lucide-react";
@@ -33,12 +34,7 @@ export const VisibleMenu: React.FC<VisibleMenuProps> = ({ value, onVisibleChange
               checked={value.heading}
               onCheckedChange={(checked) => onVisibleChange({ ...value, heading: checked })}
             />
-            <label
-              htmlFor="heading"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              Show heading
-            </label>
+            <Label htmlFor="heading">Show heading</Label>
           </div>
           <div className="flex items-center gap-2">
             <Checkbox
@@ -46,12 +42,7 @@ export const VisibleMenu: React.FC<VisibleMenuProps> = ({ value, onVisibleChange
               checked={value.lightness}
               onCheckedChange={(checked) => onVisibleChange({ ...value, lightness: checked })}
             />
-            <label
-              htmlFor="lightness"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              Show lightness
-            </label>
+            <Label htmlFor="lightness">Show lightness</Label>
           </div>
           <div className="flex items-center gap-2">
             <Checkbox
@@ -59,12 +50,7 @@ export const VisibleMenu: React.FC<VisibleMenuProps> = ({ value, onVisibleChange
               checked={value.colorCode}
               onCheckedChange={(checked) => onVisibleChange({ ...value, colorCode: checked })}
             />
-            <label
-              htmlFor="colorCode"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              Show color code
-            </label>
+            <Label htmlFor="colorCode">Show color code</Label>
           </div>
           <div className="flex items-center gap-2">
             <Checkbox
@@ -72,12 +58,7 @@ export const VisibleMenu: React.FC<VisibleMenuProps> = ({ value, onVisibleChange
               checked={value.contrast}
               onCheckedChange={(checked) => onVisibleChange({ ...value, contrast: checked })}
             />
-            <label
-              htmlFor="contrast"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              Show contrast
-            </label>
+            <Label htmlFor="contrast">Show contrast</Label>
           </div>
         </div>
       </PopoverContent>
