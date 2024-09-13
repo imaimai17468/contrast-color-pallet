@@ -18,17 +18,17 @@ export const PalletLegend: React.FC = () => {
         </div>
       </div>
       <div className="text-xs text-muted-foreground grid grid-cols-[auto,1fr] gap-2">
-        <p className="text-orange-500">≥ 3</p>
-        <div className="text-orange-500">
+        <p className="text-orange-600">≥ 3</p>
+        <div className="text-orange-600">
           <p>Large Text AA</p>
         </div>
-        <p className="text-yellow-500">≥ 4.5</p>
-        <div className="text-yellow-500">
+        <p className="text-yellow-600">≥ 4.5</p>
+        <div className="text-yellow-600">
           <p>Small Text AA</p>
           <p>Large Text AAA</p>
         </div>
-        <p className="text-green-500">≥ 7</p>
-        <div className="text-green-500">
+        <p className="text-green-600">≥ 7</p>
+        <div className="text-green-600">
           <p>Small Text AAA</p>
           <p>Large Text AAA</p>
         </div>
