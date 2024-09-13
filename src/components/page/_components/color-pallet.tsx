@@ -9,15 +9,24 @@ import { generateSigmoidData } from "../utils/sigmoid";
 import { LightnessChart } from "./lightness-chart";
 import { Pallet } from "./pallet";
 import { PalletLegend } from "./pallet-legend";
+import { ThemeColorMenu } from "./theme-color-menu";
 import { type VisibilityUI, VisibleMenu } from "./visibleMenu";
 
 type Props = {
   baseColors: string[];
   numberOfColors: number;
   selectedColorIndex: number;
+  lightThemeColor: string;
+  darkThemeColor: string;
 };
 
-export const ColorPallet: React.FC<Props> = ({ baseColors, numberOfColors, selectedColorIndex }) => {
+export const ColorPallet: React.FC<Props> = ({
+  baseColors,
+  numberOfColors,
+  selectedColorIndex,
+  lightThemeColor,
+  darkThemeColor,
+}) => {
   const lightnessList = useMemo(() => {
     return generateSigmoidData(numberOfColors);
   }, [numberOfColors]);
@@ -30,6 +39,16 @@ export const ColorPallet: React.FC<Props> = ({ baseColors, numberOfColors, selec
   const [newBaseColors, setNewBaseColors] = useQueryState(
     "baseColors",
     searchParams.baseColors.withDefault(baseColors).withOptions({ shallow: false, history: "push" }),
+  );
+
+  const [newLightThemeColor, setNewLightThemeColor] = useQueryState(
+    "lightThemeColor",
+    searchParams.lightThemeColor.withDefault(lightThemeColor).withOptions({ shallow: false, history: "push" }),
+  );
+
+  const [newDarkThemeColor, setNewDarkThemeColor] = useQueryState(
+    "darkThemeColor",
+    searchParams.darkThemeColor.withDefault(darkThemeColor).withOptions({ shallow: false, history: "push" }),
   );
 
   const [visible, setVisible] = useState<VisibilityUI>({
@@ -82,7 +101,14 @@ export const ColorPallet: React.FC<Props> = ({ baseColors, numberOfColors, selec
             </div>
             <div className="flex gap-4">
               {lightnessList.map((lightness) => (
-                <Pallet key={lightness.x} baseColor={baseColor} lightness={lightness.y} visible={visible} />
+                <Pallet
+                  key={lightness.x}
+                  baseColor={baseColor}
+                  lightness={lightness.y}
+                  visible={visible}
+                  lightThemeColor={lightThemeColor}
+                  darkThemeColor={darkThemeColor}
+                />
               ))}
             </div>
           </div>
@@ -91,7 +117,19 @@ export const ColorPallet: React.FC<Props> = ({ baseColors, numberOfColors, selec
       <Button onClick={() => setNewBaseColors([...newBaseColors, "#000000"])} className="flex gap-2 w-fit">
         <PlusCircleIcon /> Create Pallet
       </Button>
-      <VisibleMenu value={visible} onVisibleChange={setVisible} />
+      <div className="flex gap-8">
+        <VisibleMenu value={visible} onVisibleChange={setVisible} />
+        <ThemeColorMenu
+          value={{
+            lightThemeColor: newLightThemeColor,
+            darkThemeColor: newDarkThemeColor,
+          }}
+          onColorChange={(color) => {
+            setNewLightThemeColor(color.lightThemeColor);
+            setNewDarkThemeColor(color.darkThemeColor);
+          }}
+        />
+      </div>
       <div className="flex gap-8 w-full">
         <LightnessChart lightnessList={lightnessList} />
         <PalletLegend />
