@@ -21,7 +21,7 @@ export const VisibleMenu: React.FC<VisibleMenuProps> = ({ value, onVisibleChange
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button size="icon" variant="outline">
+        <Button size="icon" variant="outline" aria-label="Change visibility">
           <EyeOffIcon />
         </Button>
       </PopoverTrigger>
