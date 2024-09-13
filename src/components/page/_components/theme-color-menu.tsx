@@ -22,7 +22,7 @@ export const ThemeColorMenu: React.FC<ThemeColorMenuProps> = ({ value, onColorCh
       <PopoverTrigger asChild>
         <Button variant="outline">
           <PencilLineIcon className="w-4 h-4 mr-2" />
-          Change theme color
+          Change Background Color
         </Button>
       </PopoverTrigger>
       <PopoverContent side="right" sideOffset={8} className="flex gap-8 w-[500px] justify-center">
