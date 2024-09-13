@@ -43,12 +43,16 @@ export const ColorPallet: React.FC<Props> = ({
 
   const [newLightThemeColor, setNewLightThemeColor] = useQueryState(
     "lightThemeColor",
-    searchParams.lightThemeColor.withDefault(lightThemeColor).withOptions({ shallow: false, history: "push" }),
+    searchParams.lightThemeColor
+      .withDefault(lightThemeColor)
+      .withOptions({ shallow: false, history: "push", throttleMs: 500 }),
   );
 
   const [newDarkThemeColor, setNewDarkThemeColor] = useQueryState(
     "darkThemeColor",
-    searchParams.darkThemeColor.withDefault(darkThemeColor).withOptions({ shallow: false, history: "push" }),
+    searchParams.darkThemeColor
+      .withDefault(darkThemeColor)
+      .withOptions({ shallow: false, history: "push", throttleMs: 500 }),
   );
 
   const [visible, setVisible] = useState<VisibilityUI>({
