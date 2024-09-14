@@ -6,6 +6,7 @@ import { useQueryState } from "nuqs";
 import { useMemo, useState } from "react";
 import { searchParams } from "../../../utils/search-params";
 import { generateSigmoidData } from "../utils/sigmoid";
+import { GithubCard } from "./github-card";
 import { LightnessChart } from "./lightness-chart";
 import { Pallet } from "./pallet";
 import { PalletLegend } from "./pallet-legend";
@@ -138,6 +139,7 @@ export const ColorPallet: React.FC<Props> = ({
         <LightnessChart lightnessList={lightnessList} />
         <PalletLegend />
       </div>
+      <GithubCard />
     </div>
   );
 };
