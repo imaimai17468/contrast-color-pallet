@@ -17,12 +17,12 @@ type LightnessChartProps = {
 
 export function LightnessChart({ lightnessList }: LightnessChartProps) {
   return (
-    <Card className="w-fit">
+    <Card className="w-full h-fit">
       <CardHeader>
         <CardTitle>Lightness Chart</CardTitle>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig} className="h-72">
+        <ChartContainer config={chartConfig} className="min-h-[0px]">
           <LineChart
             accessibilityLayer
             data={lightnessList}

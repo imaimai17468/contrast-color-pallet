@@ -66,8 +66,8 @@ export const ColorPallet: React.FC<Props> = ({
     <div className="flex flex-col gap-16">
       <div className="flex flex-col gap-8">
         {newBaseColors.map((baseColor, index) => (
-          <div key={`${baseColor}-${Math.random()}`} className="flex gap-4">
-            <div className={clsx("flex flex-col justify-center w-24", !visible.heading && "hidden")}>
+          <div key={`${baseColor}-${Math.random()}`} className="grid grid-cols-1 lg:grid-cols-[96px,1fr] gap-4">
+            <div className={clsx("flex flex-col justify-center", !visible.heading && "hidden")}>
               {newBaseColors.length === 1 ? (
                 <p className="text-xl font-bold">{baseColor}</p>
               ) : (
@@ -103,7 +103,7 @@ export const ColorPallet: React.FC<Props> = ({
                 delete
               </Button>
             </div>
-            <div className="flex gap-4">
+            <div className="flex gap-4 overflow-x-auto">
               {lightnessList.map((lightness) => (
                 <Pallet
                   key={lightness.x}
@@ -134,7 +134,7 @@ export const ColorPallet: React.FC<Props> = ({
           }}
         />
       </div>
-      <div className="flex gap-8 w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr,auto] gap-8">
         <LightnessChart lightnessList={lightnessList} />
         <PalletLegend />
       </div>

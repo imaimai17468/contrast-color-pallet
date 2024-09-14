@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 
 export const PalletLegend: React.FC = () => {
   return (
-    <Card className="h-fit p-4 flex flex-col gap-4">
+    <Card className="h-fit w-fit p-4 flex flex-col gap-4">
       <p className="text-lg font-bold">Pallet Legend</p>
       <div className="flex flex-col items-center gap-2">
         <p className="text-xs text-muted-foreground">Lightness</p>
