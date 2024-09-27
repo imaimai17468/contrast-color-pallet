@@ -67,7 +67,10 @@ export const ColorPallet: React.FC<Props> = ({
     <div className="flex flex-col gap-16">
       <div className="flex flex-col gap-8">
         {newBaseColors.map((baseColor, index) => (
-          <div key={`${baseColor}-${Math.random()}`} className="grid grid-cols-1 lg:grid-cols-[96px,1fr] gap-4">
+          <div
+            key={`${baseColor}-${Math.random()}`}
+            className={clsx("grid gap-4", visible.heading ? "grid-cols-1 lg:grid-cols-[96px,1fr]" : "grid-cols-1")}
+          >
             <div className={clsx("flex flex-col justify-center", !visible.heading && "hidden")}>
               {newBaseColors.length === 1 ? (
                 <p className="text-xl font-bold">{baseColor}</p>
